@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Alam Ria PASTI Kawasan Batu 2026</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #047857;
+            --primary-dark: #065f46;
+            --primary-light: #10b981;
+            --primary-surface: #ecfdf5;
+            --gold: #d97706;
+            --gold-light: #fef3c7;
+            --gold-accent: #f59e0b;
+            --bg-body: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --danger: #ef4444;
+            --danger-bg: #fef2f2;
+            --success: #10b981;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.08) 0px, transparent 50%);
+            background-attachment: fixed;
+            padding-bottom: 90px;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+
+        .header-card {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(245, 158, 11, 0.25);
+            color: #fef3c7;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            backdrop-filter: blur(4px);
+        }
+
+        .header-title {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .header-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* 4-Step Stepper */
+        .stepper-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            background: white;
+            padding: 16px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            gap: 4px;
+            overflow-x: auto;
+        }
+
+        .stepper-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .stepper-step.active {
+            color: var(--primary-dark);
+        }
+
+        .stepper-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--border-color);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .stepper-step.active .stepper-circle {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 0 4px rgba(4, 120, 87, 0.2);
+        }
+
+        .stepper-step.completed .stepper-circle {
+            background: var(--gold-accent);
+            color: white;
+        }
+
+        .stepper-line {
+            flex-grow: 1;
+            min-width: 12px;
+            height: 3px;
+            background: var(--border-color);
+            margin: 0 2px;
+            transition: var(--transition);
+        }
+
+        .stepper-line.active {
+            background: var(--primary);
+        }
+
+        .form-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 24px;
+            transition: var(--transition);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-surface);
+        }
+
+        .section-title i {
+            color: var(--gold-accent);
+        }
+
+        .comp-type-badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: auto;
+        }
+
+        .badge-kumpulan {
+            background: var(--gold-light);
+            color: var(--gold);
+            border: 1px solid var(--gold-accent);
+        }
+
+        .badge-individu {
+            background: var(--primary-surface);
+            color: var(--primary-dark);
+            border: 1px solid var(--primary-light);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .form-label span.required {
+            color: var(--danger);
+            margin-left: 2px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1rem;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 14px 12px 42px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background-color: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            outline: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(4, 120, 87, 0.12);
+        }
+
+        .form-control:focus + .input-icon {
+            color: var(--primary);
+        }
+
+        .form-control.is-invalid {
+            border-color: var(--danger) !important;
+            background-color: var(--danger-bg);
+        }
+
+        .error-feedback {
+            color: var(--danger);
+            font-size: 0.8rem;
+            margin-top: 6px;
+            font-weight: 500;
+            display: none;
+        }
+
+        /* Checkbox Grid Styles */
+        .checkbox-section-header {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin: 16px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-tile {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .checkbox-tile:hover {
+            border-color: var(--primary-light);
+            background: var(--primary-surface);
+        }
+
+        .checkbox-tile input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .custom-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--text-muted);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            flex-shrink: 0;
+            background: white;
+            color: transparent;
+        }
+
+        .checkbox-tile input[type="checkbox"]:checked ~ .custom-checkbox {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .checkbox-tile.active {
+            border-color: var(--primary);
+            background: var(--primary-surface);
+            box-shadow: 0 2px 8px rgba(4, 120, 87, 0.12);
+        }
+
+        .tile-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .tile-title {
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+
+        .tile-limit {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .comp-block-header {
+            background: var(--primary-surface);
+            border-left: 4px solid var(--primary);
+            padding: 12px 16px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 20px 0 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .comp-block-title {
+            font-weight: 800;
+            color: var(--primary-dark);
+            font-size: 1.05rem;
+        }
+
+        .teacher-box {
+            background: #f0fdf4;
+            border: 1.5px solid var(--primary-light);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .participant-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            transition: var(--transition);
+            animation: slideUp 0.3s cubic-bezier(0, 0, 0.2, 1);
+            margin-bottom: 14px;
+        }
+
+        .participant-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-md);
+        }
+
+        .participant-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .participant-number {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .participant-number-tag {
+            background: var(--gold-light);
+            color: var(--gold);
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .btn-remove-participant {
+            background: var(--danger-bg);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-remove-participant:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-add-participant {
+            background: var(--primary-surface);
+            color: var(--primary-dark);
+            border: 1.5px dashed var(--primary);
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-add-participant:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 640px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .action-buttons-wrapper {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: var(--text-main);
+            border: none;
+            padding: 14px 24px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+
+        .btn-next, .btn-submit {
+            flex-grow: 1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-next:hover:not(:disabled), .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -5px rgba(4, 120, 87, 0.4);
+        }
+
+        .btn-next:disabled, .btn-submit:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        /* Review Summary Styles */
+        .review-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .review-comp-title {
+            font-weight: 800;
+            color: var(--primary-dark);
+            font-size: 1.05rem;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-surface);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .review-teacher {
+            background: var(--gold-light);
+            color: var(--gold);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .review-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .review-table th, .review-table td {
+            padding: 8px 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .review-table th {
+            background: var(--bg-body);
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 16px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            transform: scale(0.9);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+            font-size: 1.8rem;
+        }
+
+        .modal-icon.success {
+            background: var(--primary-surface);
+            color: var(--primary);
+        }
+
+        .modal-icon.error {
+            background: var(--danger-bg);
+            color: var(--danger);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .modal-body {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .reg-id-box {
+            background: var(--gold-light);
+            border: 1px dashed var(--gold);
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 1.15rem;
+            padding: 10px;
+            border-radius: var(--radius-md);
+            margin: 12px 0;
+            letter-spacing: 1px;
+        }
+
+        .btn-modal {
+            width: 100%;
+            padding: 12px;
+            border-radius: var(--radius-md);
+            border: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-modal:hover {
+            background: var(--primary-dark);
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 640px) {
+            .container { padding: 12px; }
+            .header-card { padding: 24px 16px; }
+            .header-title { font-size: 1.5rem; }
+            .form-card { padding: 18px; }
+            .sticky-mobile-bar {
+                position: fixed;
+                bottom: 0; left: 0; right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(8px);
+                padding: 12px 16px;
+                box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+                z-index: 90;
+                border-top: 1px solid var(--border-color);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header-card">
+            <div class="badge-tag">
+                <i class="fa-solid fa-star"></i> Edisi 2026
+            </div>
+            <h1 class="header-title">ALAM RIA PASTI KAWASAN BATU</h1>
+            <p class="header-subtitle">Sistem Pendaftaran Acara & Pertandingan Kawasan Batu</p>
+        </header>
+
+        <!-- 4-Step Stepper -->
+        <div class="stepper-wrapper">
+            <div class="stepper-step active" id="stepIndicator1">
+                <div class="stepper-circle">1</div>
+                <span>PASTI & Acara</span>
+            </div>
+            <div class="stepper-line" id="stepLine1"></div>
+            <div class="stepper-step" id="stepIndicator2">
+                <div class="stepper-circle">2</div>
+                <span>Acara Kumpulan</span>
+            </div>
+            <div class="stepper-line" id="stepLine2"></div>
+            <div class="stepper-step" id="stepIndicator3">
+                <div class="stepper-circle">3</div>
+                <span>Acara Individu</span>
+            </div>
+            <div class="stepper-line" id="stepLine3"></div>
+            <div class="stepper-step" id="stepIndicator4">
+                <div class="stepper-circle">4</div>
+                <span>Semakan & Hantar</span>
+            </div>
+        </div>
+
+        <form id="registrationForm" novalidate>
+            
+            <div id="step1Panel" class="step-panel">
+                <div class="form-card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-landmark"></i>
+                        <span>1. Pilih PASTI & Pertandingan</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="pastiSelect">
+                            Pilih PASTI <span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <select id="pastiSelect" class="form-control" required>
+                                <option value="" disabled selected>-- Pilih PASTI --</option>
+                                <option value="PASTI ABQARI">PASTI ABQARI</option>
+                                <option value="PASTI AL QAMAR">PASTI AL ABRAR</option>
+                                <option value="PASTI AL MUSTAQIM">PASTI AL MUSTAQIM</option>
+                                <option value="PASTI AL ABRAR">PASTI AL QAMAR</option>
+                                <option value="PASTI IBNU SINA">PASTI AN NUR</option>
+                                <option value="PASTI AN NUR">PASTI AS SIDDIQ</option>
+                                <option value="PASTI AS SIDDIQ">PASTI AS SYAFEI</option>
+                                <option value="PASTI AS SYAFEI">PASTI IBNU SINA</option>
+                                <option value="PASTI LITTLE DAIE">PASTI LITTLE DAIE</option>
+                            </select>
+                            <i class="fa-solid fa-school input-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Acara Kumpulan Section -->
+                    <div class="checkbox-section-header">
+                        <i class="fa-solid fa-people-group" style="color: var(--gold-accent);"></i>
+                        <span>Acara Kumpulan (Fleksibel Bilangan Peserta)</span>
+                    </div>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Nasyid" data-type="group" data-max="10" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Nasyid</span>
+                                <span class="tile-limit">Fleksibel (Maks. 10 Peserta)</span>
+                            </div>
+                        </label>
+
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Kalam Jamaie" data-type="group" data-max="15" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Kalam Jamaie</span>
+                                <span class="tile-limit">Fleksibel (Maks. 15 Peserta)</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Acara Individu Section -->
+                    <div class="checkbox-section-header">
+                        <i class="fa-solid fa-user-check" style="color: var(--primary-dark);"></i>
+                        <span>Acara Individu (1 Peserta Setiap Acara)</span>
+                    </div>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Hafazan Lelaki" data-type="solo" data-max="1" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Hafazan (Lelaki)</span>
+                                <span class="tile-limit">1 Peserta</span>
+                            </div>
+                        </label>
+
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Hafazan Perempuan" data-type="solo" data-max="1" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Hafazan (Perempuan)</span>
+                                <span class="tile-limit">1 Peserta</span>
+                            </div>
+                        </label>
+
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Bercerita Lelaki" data-type="solo" data-max="1" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Bercerita (Lelaki)</span>
+                                <span class="tile-limit">1 Peserta</span>
+                            </div>
+                        </label>
+
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Bercerita Perempuan" data-type="solo" data-max="1" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Bercerita (Perempuan)</span>
+                                <span class="tile-limit">1 Peserta</span>
+                            </div>
+                        </label>
+
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Sajak Lelaki" data-type="solo" data-max="1" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Sajak (Lelaki)</span>
+                                <span class="tile-limit">1 Peserta</span>
+                            </div>
+                        </label>
+
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Sajak Perempuan" data-type="solo" data-max="1" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Sajak (Perempuan)</span>
+                                <span class="tile-limit">1 Peserta</span>
+                            </div>
+                        </label>
+
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Azan" data-type="solo" data-max="1" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Azan</span>
+                                <span class="tile-limit">1 Peserta</span>
+                            </div>
+                        </label>
+
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Khutbah" data-type="solo" data-max="1" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Khutbah</span>
+                                <span class="tile-limit">1 Peserta</span>
+                            </div>
+                        </label>
+
+                        <label class="checkbox-tile">
+                            <input type="checkbox" value="Pidato" data-type="solo" data-max="1" class="competition-checkbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title">Pidato</span>
+                                <span class="tile-limit">1 Peserta</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="action-buttons-wrapper">
+                        <button type="button" id="btnNextStep1" class="btn-next" disabled>
+                            <span>Seterusnya</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step2Panel" class="step-panel" style="display: none;">
+                <div class="form-card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-people-group"></i>
+                        <span>2. Maklumat Acara Kumpulan</span>
+                        <span class="comp-type-badge badge-kumpulan">Acara Kumpulan</span>
+                    </div>
+
+                    <div id="groupContainer">
+                        <!-- Dynamic Group Competition Cards inserted here -->
+                    </div>
+
+                    <div class="action-buttons-wrapper sticky-mobile-bar">
+                        <button type="button" id="btnBackStep2" class="btn-secondary">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Kembali</span>
+                        </button>
+                        <button type="button" id="btnNextStep2" class="btn-next" disabled>
+                            <span>Seterusnya</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step3Panel" class="step-panel" style="display: none;">
+                <div class="form-card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-user-check"></i>
+                        <span>3. Maklumat Acara Individu</span>
+                        <span class="comp-type-badge badge-individu">Acara Individu</span>
+                    </div>
+
+                    <div id="soloContainer">
+                        <!-- Dynamic Solo Competition Cards inserted here -->
+                    </div>
+
+                    <div class="action-buttons-wrapper sticky-mobile-bar">
+                        <button type="button" id="btnBackStep3" class="btn-secondary">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Kembali</span>
+                        </button>
+                        <button type="button" id="btnNextStep3" class="btn-next" disabled>
+                            <span>Seterusnya: Semakan</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step4Panel" class="step-panel" style="display: none;">
+                <div class="form-card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                        <span>4. Semakan & Pengesahan Maklumat</span>
+                    </div>
+
+                    <div id="summaryReviewContainer">
+                        <!-- Summary populated dynamically -->
+                    </div>
+
+                    <div class="declaration-box" style="margin-top: 20px; padding: 16px; background: #f8fafc; border: 1.5px solid var(--border-color); border-radius: var(--radius-md);">
+                        <label class="checkbox-tile" style="border: none; background: transparent; padding: 0;">
+                            <input type="checkbox" id="declarationCheckbox">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check fa-xs"></i></div>
+                            <div class="tile-content">
+                                <span class="tile-title" style="font-size: 0.88rem;">Saya mengesahkan bahawa semua maklumat yang diisi adalah betul dan tepat.</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="action-buttons-wrapper sticky-mobile-bar">
+                        <button type="button" id="btnBackStep4" class="btn-secondary">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Kembali Edit</span>
+                        </button>
+                        <button type="submit" id="btnSubmit" class="btn-submit" disabled>
+                            <span class="spinner" id="submitSpinner"></span>
+                            <i class="fa-solid fa-paper-plane" id="submitIcon"></i>
+                            <span id="submitText">Hantar Pendaftaran</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Status Modal -->
+    <div class="modal-overlay" id="statusModal">
+        <div class="modal-card">
+            <div class="modal-icon" id="modalIcon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="modal-title" id="modalTitle">Berjaya!</h3>
+            <div class="modal-body" id="modalMessage">Pendaftaran berjaya disimpan.</div>
+            <div id="modalExtra"></div>
+            <button type="button" class="btn-modal" id="btnCloseModal">Tutup</button>
+        </div>
+    </div>
+
+    <script>
+        // Set Google Apps Script Web App URL
+        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwskHkwH6LFRfqpD7xK_iN0kC-8SJcm6Qlavvf6B_VdwPGie2W0L4749K6BtcvAd-_Lng/exec";
+
+        // Form & Panel Elements
+        const registrationForm = document.getElementById('registrationForm');
+        const pastiSelect = document.getElementById('pastiSelect');
+        const compCheckboxes = document.querySelectorAll('.competition-checkbox');
+
+        const step1Panel = document.getElementById('step1Panel');
+        const step2Panel = document.getElementById('step2Panel');
+        const step3Panel = document.getElementById('step3Panel');
+        const step4Panel = document.getElementById('step4Panel');
+
+        const stepIndicator1 = document.getElementById('stepIndicator1');
+        const stepIndicator2 = document.getElementById('stepIndicator2');
+        const stepIndicator3 = document.getElementById('stepIndicator3');
+        const stepIndicator4 = document.getElementById('stepIndicator4');
+
+        const stepLine1 = document.getElementById('stepLine1');
+        const stepLine2 = document.getElementById('stepLine2');
+        const stepLine3 = document.getElementById('stepLine3');
+
+        const btnNextStep1 = document.getElementById('btnNextStep1');
+        const btnNextStep2 = document.getElementById('btnNextStep2');
+        const btnNextStep3 = document.getElementById('btnNextStep3');
+
+        const btnBackStep2 = document.getElementById('btnBackStep2');
+        const btnBackStep3 = document.getElementById('btnBackStep3');
+        const btnBackStep4 = document.getElementById('btnBackStep4');
+
+        const groupContainer = document.getElementById('groupContainer');
+        const soloContainer = document.getElementById('soloContainer');
+        const summaryReviewContainer = document.getElementById('summaryReviewContainer');
+
+        const declarationCheckbox = document.getElementById('declarationCheckbox');
+        const btnSubmit = document.getElementById('btnSubmit');
+        const submitSpinner = document.getElementById('submitSpinner');
+        const submitIcon = document.getElementById('submitIcon');
+        const submitText = document.getElementById('submitText');
+
+        const statusModal = document.getElementById('statusModal');
+        const modalIcon = document.getElementById('modalIcon');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const modalExtra = document.getElementById('modalExtra');
+        const btnCloseModal = document.getElementById('btnCloseModal');
+
+        // Navigation state history
+        let previousStep = 1;
+
+        // Step 1 Checkbox selection handling
+        pastiSelect.addEventListener('change', checkStep1Validity);
+        compCheckboxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                cb.closest('.checkbox-tile').classList.toggle('active', cb.checked);
+                checkStep1Validity();
+            });
+        });
+
+        function checkStep1Validity() {
+            const hasPasti = pastiSelect.value !== "";
+            const selectedCount = Array.from(compCheckboxes).filter(cb => cb.checked).length;
+            btnNextStep1.disabled = !(hasPasti && selectedCount > 0);
+        }
+
+        // Navigation handlers
+        btnNextStep1.addEventListener('click', () => {
+            renderGroupForms();
+            renderSoloForms();
+
+            const hasGroup = Array.from(compCheckboxes).some(cb => cb.checked && cb.getAttribute('data-type') === 'group');
+            const hasSolo = Array.from(compCheckboxes).some(cb => cb.checked && cb.getAttribute('data-type') === 'solo');
+
+            if (hasGroup) {
+                goToStep(2);
+            } else if (hasSolo) {
+                goToStep(3);
+            } else {
+                goToStep(4);
+            }
+        });
+
+        btnNextStep2.addEventListener('click', () => {
+            const hasSolo = Array.from(compCheckboxes).some(cb => cb.checked && cb.getAttribute('data-type') === 'solo');
+            if (hasSolo) {
+                goToStep(3);
+            } else {
+                renderStep4Summary();
+                goToStep(4);
+            }
+        });
+
+        btnNextStep3.addEventListener('click', () => {
+            renderStep4Summary();
+            goToStep(4);
+        });
+
+        btnBackStep2.addEventListener('click', () => goToStep(1));
+        
+        btnBackStep3.addEventListener('click', () => {
+            const hasGroup = Array.from(compCheckboxes).some(cb => cb.checked && cb.getAttribute('data-type') === 'group');
+            if (hasGroup) {
+                goToStep(2);
+            } else {
+                goToStep(1);
+            }
+        });
+
+        btnBackStep4.addEventListener('click', () => {
+            const hasSolo = Array.from(compCheckboxes).some(cb => cb.checked && cb.getAttribute('data-type') === 'solo');
+            const hasGroup = Array.from(compCheckboxes).some(cb => cb.checked && cb.getAttribute('data-type') === 'group');
+
+            if (hasSolo) {
+                goToStep(3);
+            } else if (hasGroup) {
+                goToStep(2);
+            } else {
+                goToStep(1);
+            }
+        });
+
+        declarationCheckbox.addEventListener('change', () => {
+            declarationCheckbox.closest('.checkbox-tile').classList.toggle('active', declarationCheckbox.checked);
+            btnSubmit.disabled = !declarationCheckbox.checked;
+        });
+
+        function goToStep(step) {
+            step1Panel.style.display = 'none';
+            step2Panel.style.display = 'none';
+            step3Panel.style.display = 'none';
+            step4Panel.style.display = 'none';
+
+            stepIndicator1.classList.remove('active', 'completed');
+            stepIndicator2.classList.remove('active', 'completed');
+            stepIndicator3.classList.remove('active', 'completed');
+            stepIndicator4.classList.remove('active', 'completed');
+
+            stepLine1.classList.remove('active');
+            stepLine2.classList.remove('active');
+            stepLine3.classList.remove('active');
+
+            if (step >= 1) stepIndicator1.classList.add(step === 1 ? 'active' : 'completed');
+            if (step >= 2) {
+                stepIndicator2.classList.add(step === 2 ? 'active' : 'completed');
+                stepLine1.classList.add('active');
+            }
+            if (step >= 3) {
+                stepIndicator3.classList.add(step === 3 ? 'active' : 'completed');
+                stepLine2.classList.add('active');
+            }
+            if (step >= 4) {
+                stepIndicator4.classList.add(step === 4 ? 'active' : 'completed');
+                stepLine3.classList.add('active');
+            }
+
+            if (step === 1) step1Panel.style.display = 'block';
+            if (step === 2) { step2Panel.style.display = 'block'; checkStepValidity(groupContainer, btnNextStep2); }
+            if (step === 3) { step3Panel.style.display = 'block'; checkStepValidity(soloContainer, btnNextStep3); }
+            if (step === 4) { 
+                step4Panel.style.display = 'block';
+                declarationCheckbox.checked = false;
+                declarationCheckbox.closest('.checkbox-tile').classList.remove('active');
+                btnSubmit.disabled = true;
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderGroupForms() {
+            const selectedGroupCBs = Array.from(compCheckboxes).filter(cb => cb.checked && cb.getAttribute('data-type') === 'group');
+            groupContainer.innerHTML = '';
+
+            selectedGroupCBs.forEach((cb, idx) => {
+                const compName = cb.value;
+                const maxLimit = parseInt(cb.getAttribute('data-max')) || 10;
+
+                const block = document.createElement('div');
+                block.className = 'comp-block';
+                block.setAttribute('data-comp', compName);
+
+                block.innerHTML = `
+                    <div class="comp-block-header">
+                        <div class="comp-block-title">
+                            <i class="fa-solid fa-trophy" style="color: var(--gold-accent); margin-right: 6px;"></i>
+                            ${compName}
+                        </div>
+                        <div class="counter-badge" style="background: var(--gold-accent); color: white; padding: 4px 10px; border-radius: 99px; font-weight: 700; font-size: 0.8rem;">
+                            <span class="participant-count-tag">1</span> / ${maxLimit} Peserta
+                        </div>
+                    </div>
+
+                    <div class="teacher-box">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Nama Guru Pengiring (${compName}) <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control teacher-name" placeholder="Contoh: USTAZAH NURUL HIDA" required>
+                                <i class="fa-solid fa-chalkboard-user input-icon"></i>
+                            </div>
+                            <div class="error-feedback">Sila masukkan nama guru pengiring.</div>
+                        </div>
+                    </div>
+
+                    <div class="participants-list"></div>
+
+                    <button type="button" class="btn-add-participant">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>+ Tambah Peserta (${compName})</span>
+                    </button>
+                `;
+
+                const listContainer = block.querySelector('.participants-list');
+                const addBtn = block.querySelector('.btn-add-participant');
+
+                // Add initial participant
+                addParticipantCard(listContainer, compName, 1, maxLimit, block);
+
+                addBtn.addEventListener('click', () => {
+                    const currentCards = listContainer.querySelectorAll('.participant-card').length;
+                    if (currentCards < maxLimit) {
+                        addParticipantCard(listContainer, compName, currentCards + 1, maxLimit, block);
+                    }
+                });
+
+                groupContainer.appendChild(block);
+            });
+        }
+
+        function addParticipantCard(container, compName, number, maxLimit, block) {
+            const card = document.createElement('div');
+            card.className = 'participant-card';
+            card.innerHTML = `
+                <div class="participant-header">
+                    <div class="participant-number">
+                        <span class="participant-number-tag">${number}</span>
+                        Peserta #${number}
+                    </div>
+                    ${number > 1 ? `<button type="button" class="btn-remove-participant"><i class="fa-solid fa-trash"></i> Padam</button>` : ''}
+                </div>
+                <div class="grid-2">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Nama Penuh Peserta <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" class="form-control participant-name" placeholder="Contoh: AHMAD BIN ABDULLAH" required>
+                            <i class="fa-solid fa-id-card input-icon"></i>
+                        </div>
+                        <div class="error-feedback">Sila masukkan nama peserta.</div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">No. Kad Pengenalan / MyKid <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" class="form-control participant-ic" placeholder="Contoh: 180101101234" maxlength="14" required>
+                            <i class="fa-solid fa-fingerprint input-icon"></i>
+                        </div>
+                        <div class="error-feedback">Sila masukkan No. IC yang sah.</div>
+                    </div>
+                </div>
+            `;
+
+            const removeBtn = card.querySelector('.btn-remove-participant');
+            if (removeBtn) {
+                removeBtn.addEventListener('click', () => {
+                    card.remove();
+                    updateParticipantNumbers(container, block, maxLimit);
+                    checkStepValidity(groupContainer, btnNextStep2);
+                });
+            }
+
+            container.appendChild(card);
+            updateParticipantNumbers(container, block, maxLimit);
+
+            const inputs = card.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    validateInput(input);
+                    checkStepValidity(groupContainer, btnNextStep2);
+                });
+            });
+
+            // Also validate teacher input
+            const teacherInput = block.querySelector('.teacher-name');
+            teacherInput.addEventListener('input', () => {
+                validateInput(teacherInput);
+                checkStepValidity(groupContainer, btnNextStep2);
+            });
+        }
+
+        function updateParticipantNumbers(container, block, maxLimit) {
+            const cards = container.querySelectorAll('.participant-card');
+            cards.forEach((card, index) => {
+                const numTag = card.querySelector('.participant-number-tag');
+                const numText = card.querySelector('.participant-number');
+                if (numTag) numTag.textContent = index + 1;
+                if (numText) {
+                    numText.childNodes[numText.childNodes.length - 1].textContent = ` Peserta #${index + 1}`;
+                }
+            });
+
+            const countTag = block.querySelector('.participant-count-tag');
+            if (countTag) countTag.textContent = cards.length;
+
+            const addBtn = block.querySelector('.btn-add-participant');
+            if (addBtn) addBtn.style.display = cards.length >= maxLimit ? 'none' : 'inline-flex';
+        }
+
+        function renderSoloForms() {
+            const selectedSoloCBs = Array.from(compCheckboxes).filter(cb => cb.checked && cb.getAttribute('data-type') === 'solo');
+            soloContainer.innerHTML = '';
+
+            selectedSoloCBs.forEach(cb => {
+                const compName = cb.value;
+
+                const block = document.createElement('div');
+                block.className = 'comp-block';
+                block.setAttribute('data-comp', compName);
+
+                block.innerHTML = `
+                    <div class="comp-block-header">
+                        <div class="comp-block-title">
+                            <i class="fa-solid fa-trophy" style="color: var(--primary-dark); margin-right: 6px;"></i>
+                            ${compName} (1 Peserta)
+                        </div>
+                    </div>
+
+                    <div class="teacher-box">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Nama Guru Pengiring (${compName}) <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control teacher-name" placeholder="Contoh: USTAZAH HASNAH" required>
+                                <i class="fa-solid fa-chalkboard-user input-icon"></i>
+                            </div>
+                            <div class="error-feedback">Sila masukkan nama guru pengiring.</div>
+                        </div>
+                    </div>
+
+                    <div class="participant-card">
+                        <div class="participant-header">
+                            <div class="participant-number">
+                                <span class="participant-number-tag">1</span> Peserta Solo
+                            </div>
+                        </div>
+                        <div class="grid-2">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Nama Penuh Peserta <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control participant-name" placeholder="Contoh: MUHAMMAD ALI BIN OTHMAN" required>
+                                    <i class="fa-solid fa-id-card input-icon"></i>
+                                </div>
+                                <div class="error-feedback">Sila masukkan nama peserta.</div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">No. Kad Pengenalan / MyKid <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control participant-ic" placeholder="Contoh: 180202101234" maxlength="14" required>
+                                    <i class="fa-solid fa-fingerprint input-icon"></i>
+                                </div>
+                                <div class="error-feedback">Sila masukkan No. IC yang sah.</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                soloContainer.appendChild(block);
+
+                const inputs = block.querySelectorAll('input');
+                inputs.forEach(input => {
+                    input.addEventListener('input', () => {
+                        validateInput(input);
+                        checkStepValidity(soloContainer, btnNextStep3);
+                    });
+                });
+            });
+        }
+
+        function validateInput(input) {
+            const value = input.value.trim();
+            const parent = input.closest('.form-group');
+            const errorMsg = parent.querySelector('.error-feedback');
+
+            if (!value) {
+                input.classList.add('is-invalid');
+                if (errorMsg) errorMsg.style.display = 'block';
+                return false;
+            } else {
+                input.classList.remove('is-invalid');
+                if (errorMsg) errorMsg.style.display = 'none';
+            }
+
+            if (input.classList.contains('participant-ic')) {
+                const cleanIC = value.replace(/[^0-9]/g, '');
+                input.value = cleanIC;
+
+                if (cleanIC.length < 6) {
+                    input.classList.add('is-invalid');
+                    if (errorMsg) {
+                        errorMsg.textContent = "No. IC tidak lengkap (Sekurang-kurangnya 6 digit).";
+                        errorMsg.style.display = 'block';
+                    }
+                    return false;
+                }
+
+                const allICInputs = Array.from(document.querySelectorAll('.participant-ic'));
+                const duplicates = allICInputs.filter(inp => inp.value.trim() === cleanIC && inp.value.trim() !== '');
+
+                if (duplicates.length > 1) {
+                    input.classList.add('is-invalid');
+                    if (errorMsg) {
+                        errorMsg.textContent = "No. IC bertindih dalam borang ini!";
+                        errorMsg.style.display = 'block';
+                    }
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function checkStepValidity(container, nextButton) {
+            const inputs = Array.from(container.querySelectorAll('input'));
+            let isValid = inputs.length > 0;
+
+            inputs.forEach(input => {
+                if (!input.value.trim() || input.classList.contains('is-invalid')) {
+                    isValid = false;
+                }
+            });
+
+            nextButton.disabled = !isValid;
+        }
+
+        function renderStep4Summary() {
+            const pasti = pastiSelect.value;
+            const selectedCheckboxes = Array.from(compCheckboxes).filter(cb => cb.checked);
+
+            let reviewHtml = `
+                <div class="review-card" style="background: var(--primary-surface); border-color: var(--primary-light);">
+                    <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">PASTI Terpilih</div>
+                    <div style="font-size: 1.25rem; font-weight: 800; color: var(--primary-dark);">${pasti}</div>
+                </div>
+            `;
+
+            selectedCheckboxes.forEach(cb => {
+                const compName = cb.value;
+                const block = document.querySelector(`.comp-block[data-comp="${compName}"]`);
+                if (!block) return;
+
+                const teacherName = block.querySelector('.teacher-name').value.trim().toUpperCase();
+                const cards = block.querySelectorAll('.participant-card');
+
+                reviewHtml += `
+                    <div class="review-card">
+                        <div class="review-comp-title">
+                            <span><i class="fa-solid fa-trophy" style="color: var(--gold-accent);"></i> ${compName}</span>
+                            <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted);">${cards.length} Peserta</span>
+                        </div>
+                        <div class="review-teacher">
+                            <i class="fa-solid fa-chalkboard-user"></i> Guru Pengiring: ${teacherName}
+                        </div>
+                        <table class="review-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%;">#</th>
+                                    <th>Nama Peserta</th>
+                                    <th style="width: 35%;">No. Kad Pengenalan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `;
+
+                cards.forEach((card, idx) => {
+                    const pName = card.querySelector('.participant-name').value.trim().toUpperCase();
+                    const pIc = card.querySelector('.participant-ic').value.trim();
+                    reviewHtml += `
+                        <tr>
+                            <td><b>${idx + 1}</b></td>
+                            <td>${pName}</td>
+                            <td><code>${pIc}</code></td>
+                        </tr>
+                    `;
+                });
+
+                reviewHtml += `
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            });
+
+            summaryReviewContainer.innerHTML = reviewHtml;
+        }
+
+        registrationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (btnSubmit.disabled || !declarationCheckbox.checked) return;
+
+            const pasti = pastiSelect.value;
+            const selectedCheckboxes = Array.from(compCheckboxes).filter(cb => cb.checked);
+
+            const registrations = selectedCheckboxes.map(cb => {
+                const compName = cb.value;
+                const block = document.querySelector(`.comp-block[data-comp="${compName}"]`);
+                const teacherName = block.querySelector('.teacher-name').value.trim().toUpperCase();
+                const cards = block.querySelectorAll('.participant-card');
+
+                const participants = Array.from(cards).map((card, idx) => ({
+                    participantNo: idx + 1,
+                    name: card.querySelector('.participant-name').value.trim().toUpperCase(),
+                    ic: card.querySelector('.participant-ic').value.trim()
+                }));
+
+                return {
+                    competition: compName,
+                    teacher: teacherName,
+                    participants: participants
+                };
+            });
+
+            const payload = {
+                pasti: pasti,
+                registrations: registrations
+            };
+
+            setLoadingState(true);
+
+            try {
+                if (GAS_WEB_APP_URL === "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") {
+                    throw new Error("Sila tetapkan 'GAS_WEB_APP_URL' dalam index.html dengan Web App URL Apps Script yang sah.");
+                }
+
+                const response = await fetch(GAS_WEB_APP_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    showModal('success', 'Pendaftaran Berjaya!', 
+                        `Maklumat pendaftaran bagi <b>${pasti}</b> telah berjaya disimpan.`,
+                        `<div class="reg-id-box">ID REGISTRATION: ${result.registrationId}</div>`
+                    );
+                    resetForm();
+                } else {
+                    showModal('error', 'Pendaftaran Gagal', result.message || 'Ralat berlaku semasa menyimpan rekod.');
+                }
+
+            } catch (err) {
+                console.error("Submission Error:", err);
+                showModal('error', 'Ralat Rangkaian / Sistem', err.message || 'Gagal berhubung dengan pelayan. Sila cuba lagi.');
+            } finally {
+                setLoadingState(false);
+            }
+        });
+
+        function setLoadingState(isLoading) {
+            btnSubmit.disabled = isLoading || !declarationCheckbox.checked;
+            btnBackStep4.disabled = isLoading;
+            if (isLoading) {
+                submitSpinner.style.display = 'inline-block';
+                submitIcon.style.display = 'none';
+                submitText.textContent = 'Menghantar Data...';
+            } else {
+                submitSpinner.style.display = 'none';
+                submitIcon.style.display = 'inline-block';
+                submitText.textContent = 'Hantar Pendaftaran';
+            }
+        }
+
+        function showModal(type, title, message, extraHtml = '') {
+            modalIcon.className = `modal-icon ${type}`;
+            modalIcon.innerHTML = type === 'success' 
+                ? '<i class="fa-solid fa-check"></i>' 
+                : '<i class="fa-solid fa-triangle-exclamation"></i>';
+            
+            modalTitle.textContent = title;
+            modalMessage.innerHTML = message;
+            modalExtra.innerHTML = extraHtml;
+
+            statusModal.classList.add('active');
+        }
+
+        btnCloseModal.addEventListener('click', () => statusModal.classList.remove('active'));
+
+        function resetForm() {
+            registrationForm.reset();
+            compCheckboxes.forEach(cb => {
+                cb.checked = false;
+                cb.closest('.checkbox-tile').classList.remove('active');
+            });
+            groupContainer.innerHTML = '';
+            soloContainer.innerHTML = '';
+            goToStep(1);
+            checkStep1Validity();
+        }
+    </script>
+</body>
+</html>
