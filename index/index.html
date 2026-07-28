@@ -766,10 +766,19 @@
         @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 640px) {
+            body {
+                padding-bottom: 120px;
+            }
+
             .container { padding: 12px; }
             .header-card { padding: 20px 14px; }
             .header-title { font-size: 1.4rem; }
             .form-card { padding: 16px 14px; }
+
+            /* Extra bottom clearance for step panels so lower inputs are never covered by sticky bottom bar */
+            .step-panel {
+                padding-bottom: 100px;
+            }
 
             /* Prevent auto-zoom on iOS inputs upon focus */
             .form-control {
@@ -1333,7 +1342,10 @@
                 addBtn.addEventListener('click', () => {
                     const currentCards = listContainer.querySelectorAll('.participant-card').length;
                     if (currentCards < maxLimit) {
-                        addParticipantCard(listContainer, compName, currentCards + 1, maxLimit, block);
+                        const newCard = addParticipantCard(listContainer, compName, currentCards + 1, maxLimit, block);
+                        if (newCard) {
+                            newCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
                     }
                 });
 
@@ -1398,6 +1410,8 @@
                 validateInput(teacherInput);
                 checkStepValidity(groupContainer, btnNextStep2);
             });
+
+            return card;
         }
 
         function updateParticipantNumbers(container, block, maxLimit) {
