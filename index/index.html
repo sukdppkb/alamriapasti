@@ -120,6 +120,26 @@
             font-weight: 400;
         }
 
+        .poster-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .poster-img {
+            max-width: 100%;
+            max-height: 480px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.25);
+            transition: var(--transition);
+            object-fit: contain;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.015);
+        }
+
         /* 4-Step Stepper */
         .stepper-wrapper {
             display: flex;
@@ -772,6 +792,13 @@
             </div>
             <h1 class="header-title">ALAM RIA PASTI KAWASAN BATU</h1>
             <p class="header-subtitle">Sistem Pendaftaran Acara & Pertandingan Kawasan Batu</p>
+
+            <div class="poster-container">
+                <img src="https://i.postimg.cc/cLHgPMNy/Poster-ALAM-RIA-PASTI-Batu-2026.png" 
+                     alt="Poster Alam Ria PASTI Kawasan Batu 2026" 
+                     class="poster-img"
+                     onerror="this.onerror=null; this.src='https://placehold.co/800x500/047857/ffffff?text=Poster+Alam+Ria+PASTI+2026';">
+            </div>
         </header>
 
         <!-- 4-Step Stepper -->
@@ -818,7 +845,7 @@
                                 <option value="PASTI AL MUSTAQIM">PASTI AL MUSTAQIM</option>
                                 <option value="PASTI AL ABRAR">PASTI AL QAMAR</option>
                                 <option value="PASTI IBNU SINA">PASTI AN NUR</option>
-                                <option value="PASTI AN NUR">PASTI AS SIDDIQ</option>
+                                <option value="PASTI AN NUR">PASTI AN NUR</option>
                                 <option value="PASTI AS SIDDIQ">PASTI AS SYAFEI</option>
                                 <option value="PASTI AS SYAFEI">PASTI IBNU SINA</option>
                                 <option value="PASTI LITTLE DAIE">PASTI LITTLE DAIE</option>
