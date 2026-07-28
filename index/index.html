@@ -767,17 +767,53 @@
 
         @media (max-width: 640px) {
             .container { padding: 12px; }
-            .header-card { padding: 24px 16px; }
-            .header-title { font-size: 1.5rem; }
-            .form-card { padding: 18px; }
+            .header-card { padding: 20px 14px; }
+            .header-title { font-size: 1.4rem; }
+            .form-card { padding: 16px 14px; }
+
+            /* Prevent auto-zoom on iOS inputs upon focus */
+            .form-control {
+                font-size: 16px !important;
+                height: 48px;
+            }
+
+            /* Optimized Stepper for Phone View */
+            .stepper-wrapper {
+                padding: 10px 8px;
+                gap: 2px;
+            }
+            .stepper-step {
+                gap: 4px;
+                font-size: 0.72rem;
+            }
+            .stepper-circle {
+                width: 24px;
+                height: 24px;
+                font-size: 0.75rem;
+            }
+
+            /* Touch-Friendly Checkbox Grid for Phones */
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .checkbox-tile {
+                min-height: 50px;
+                padding: 12px 14px;
+            }
+
+            /* Safe-Area Aware Sticky Bottom Bar */
             .sticky-mobile-bar {
                 position: fixed;
-                bottom: 0; left: 0; right: 0;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(8px);
-                padding: 12px 16px;
-                box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
-                z-index: 90;
+                bottom: 0; 
+                left: 0; 
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)) 16px;
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
+                z-index: 100;
                 border-top: 1px solid var(--border-color);
             }
         }
@@ -1326,12 +1362,12 @@
                         <div class="error-feedback">Sila masukkan nama peserta.</div>
                     </div>
                     <div class="form-group" style="margin-bottom: 0;">
-                        <label class="form-label">No. Kad Pengenalan / MyKid <span class="required">*</span></label>
+                        <label class="form-label">No. MyKid / IC / Pasport <span class="required">*</span></label>
                         <div class="input-wrapper">
-                            <input type="text" class="form-control participant-ic" placeholder="Contoh: 180101101234" maxlength="14" required>
+                            <input type="text" class="form-control participant-ic" placeholder="Contoh: 180101101234 / A1234567" maxlength="20" required>
                             <i class="fa-solid fa-fingerprint input-icon"></i>
                         </div>
-                        <div class="error-feedback">Sila masukkan No. IC yang sah.</div>
+                        <div class="error-feedback">Sila masukkan No. IC / Pasport yang sah.</div>
                     </div>
                 </div>
             `;
@@ -1428,12 +1464,12 @@
                                 <div class="error-feedback">Sila masukkan nama peserta.</div>
                             </div>
                             <div class="form-group" style="margin-bottom: 0;">
-                                <label class="form-label">No. Kad Pengenalan / MyKid <span class="required">*</span></label>
+                                <label class="form-label">No. MyKid / IC / Pasport <span class="required">*</span></label>
                                 <div class="input-wrapper">
-                                    <input type="text" class="form-control participant-ic" placeholder="Contoh: 180202101234" maxlength="14" required>
+                                    <input type="text" class="form-control participant-ic" placeholder="Contoh: 180202101234 / A1234567" maxlength="20" required>
                                     <i class="fa-solid fa-fingerprint input-icon"></i>
                                 </div>
-                                <div class="error-feedback">Sila masukkan No. IC yang sah.</div>
+                                <div class="error-feedback">Sila masukkan No. IC / Pasport yang sah.</div>
                             </div>
                         </div>
                     </div>
@@ -1466,25 +1502,29 @@
             }
 
             if (input.classList.contains('participant-ic')) {
-                const cleanIC = value.replace(/[^0-9]/g, '');
+                // Support alphanumeric characters for both IC/MyKid and Passport numbers
+                const cleanIC = value.toUpperCase().replace(/[^A-Z0-9]/g, '');
                 input.value = cleanIC;
 
-                if (cleanIC.length < 6) {
+                if (cleanIC.length < 5) {
                     input.classList.add('is-invalid');
                     if (errorMsg) {
-                        errorMsg.textContent = "No. IC tidak lengkap (Sekurang-kurangnya 6 digit).";
+                        errorMsg.textContent = "No. IC / Pasport tidak lengkap (Sekurang-kurangnya 5 aksara).";
                         errorMsg.style.display = 'block';
                     }
                     return false;
                 }
 
                 const allICInputs = Array.from(document.querySelectorAll('.participant-ic'));
-                const duplicates = allICInputs.filter(inp => inp.value.trim() === cleanIC && inp.value.trim() !== '');
+                const duplicates = allICInputs.filter(inp => {
+                    const inpVal = inp.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+                    return inpVal === cleanIC && cleanIC !== '';
+                });
 
                 if (duplicates.length > 1) {
                     input.classList.add('is-invalid');
                     if (errorMsg) {
-                        errorMsg.textContent = "No. IC bertindih dalam borang ini!";
+                        errorMsg.textContent = "No. IC / Pasport bertindih dalam borang ini!";
                         errorMsg.style.display = 'block';
                     }
                     return false;
@@ -1540,7 +1580,7 @@
                                 <tr>
                                     <th style="width: 10%;">#</th>
                                     <th>Nama Peserta</th>
-                                    <th style="width: 35%;">No. Kad Pengenalan</th>
+                                    <th style="width: 35%;">No. IC / Pasport</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1562,6 +1602,7 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
                 `;
             });
 
