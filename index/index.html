@@ -767,7 +767,7 @@
 
         @media (max-width: 640px) {
             body {
-                padding-bottom: 120px;
+                padding-bottom: 2200px;
             }
 
             .container { padding: 12px; }
@@ -813,7 +813,7 @@
 
             /* Safe-Area Aware Sticky Bottom Bar */
             .sticky-mobile-bar {
-                position: fixed;
+                position: sticky;
                 bottom: 0; 
                 left: 0; 
                 right: 0;
@@ -824,6 +824,8 @@
                 box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
                 z-index: 100;
                 border-top: 1px solid var(--border-color);
+                max-height: 25vh;
+                overflow-y: auto;
             }
         }
     </style>
@@ -1345,6 +1347,7 @@
                         const newCard = addParticipantCard(listContainer, compName, currentCards + 1, maxLimit, block);
                         if (newCard) {
                             newCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            window.scrollBy({ top: -80, behavior: 'smooth'});
                         }
                     }
                 });
